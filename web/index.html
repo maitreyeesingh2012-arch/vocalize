@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vocalize</title>
+<meta name="description" content="Your personal AI vocal coach. Sing, and Vocalize measures your pitch, breath, vibrato and tone, then coaches you with exercises.">
+<meta name="theme-color" content="#0f0c14">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Vocalize">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/landing.css">
+<script src="js/config.js"></script>
+</head>
+<body class="landing-mode">
+
+<main id="landingRoot">
+  <!-- ─── Landing + Auth ─── -->
+  <section id="authView" class="landing hidden">
+    <nav class="l-nav">
+      <div class="l-wrap">
+        <div class="l-logo"><span class="logo logo-i"><span class="logo-word">Vocal<span class="mic-i" role="img" aria-label="i"></span><em>ze</em></span></span></div>
+        <div class="l-nav-links">
+          <button class="l-link" data-scroll="method">The method</button>
+          <button class="l-link" data-scroll="plates">See your voice</button>
+          <button class="l-link" data-goto="login">Sign in</button>
+          <button class="l-btn l-btn-ghost l-btn-sm" data-guest>Try as guest</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="l-hero">
+      <canvas id="scoreCanvas" aria-hidden="true"></canvas>
+      <div class="l-wrap" style="width:100%">
+        <div class="l-hero-copy">
+          <div class="l-overline reveal">A listening room for singers</div>
+          <h1 class="l-title reveal d1">Every voice<br>has a <em>story.</em>
+            <span class="l-sub-line">Let us hear yours.</span></h1>
+          <p class="l-lede reveal d2">
+            Vocalize is a personal vocal coach that listens the way a great teacher does. Sing a few bars and it
+            follows every note, measuring your pitch to the cent, the breath beneath each phrase, the shimmer of your
+            vibrato and the color of your tone. Then it tells you, kindly and clearly, how to sing even better.
+          </p>
+          <div class="l-cta reveal d3">
+            <button class="l-btn l-btn-gold" data-guest>Begin singing as a guest</button>
+            <button class="l-btn l-btn-ghost" data-goto="register">Create an account</button>
+          </div>
+        </div>
+      </div>
+      <div class="l-fig">fig. i: a melody, traced as Vocalize hears it</div>
+      <div class="l-scroll">Listen<span></span></div>
+    </div>
+
+    <!-- Manifesto -->
+    <div class="l-manifesto">
+      <div class="l-wrap">
+        <div class="l-rule reveal">𝄞</div>
+        <p class="l-quote reveal d1">“The voice is the only instrument you can never put down. It deserves a teacher who hears every breath.”</p>
+        <div class="l-quote-by reveal d2">The Vocalize philosophy</div>
+      </div>
+    </div>
+
+    <!-- The method -->
+    <div class="l-section" id="method">
+      <div class="l-wrap">
+        <div class="l-kicker reveal">The method</div>
+        <h2 class="l-h2 reveal d1">A practice in <em>three movements</em></h2>
+        <div class="l-movements">
+          <div class="l-mv reveal">
+            <div class="l-numeral">I</div>
+            <h3>Sing</h3>
+            <div class="l-tempo">Allegro</div>
+            <p>Record in your browser or bring a recording. Ten to thirty seconds of any song you love is enough. No studio, no special microphone.</p>
+          </div>
+          <div class="l-mv reveal d1">
+            <div class="l-numeral">II</div>
+            <h3>Listen</h3>
+            <div class="l-tempo">Andante</div>
+            <p>More than twenty careful measurements unfold together: where each note lands, how your breath carries a phrase, and how you move between chest, mix and head voice.</p>
+          </div>
+          <div class="l-mv reveal d2">
+            <div class="l-numeral">III</div>
+            <h3>Bloom</h3>
+            <div class="l-tempo">Crescendo</div>
+            <p>Receive the one thing to work on first, exercises chosen for your voice type, and a quiet record of every session so you can hear yourself grow.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Program -->
+    <div class="l-section" style="padding-top:40px">
+      <div class="l-wrap">
+        <div class="l-kicker reveal">Tonight's program</div>
+        <h2 class="l-h2 reveal d1">Everything a <em>teacher</em> would hear</h2>
+        <div class="l-program">
+          <div class="l-item reveal"><div class="l-item-top"><b>Intonation</b><i></i><span>to the cent</span></div><p>Note-by-note accuracy, whether you drift sharp or flat, and the exact notes to practice.</p></div>
+          <div class="l-item reveal d1"><div class="l-item-top"><b>Vibrato</b><i></i><span>rate &amp; width</span></div><p>Its speed, width and evenness, compared with the ideal for your voice.</p></div>
+          <div class="l-item reveal"><div class="l-item-top"><b>Breath</b><i></i><span>support &amp; phrasing</span></div><p>How long each phrase lasts, how steady your air pressure is, and where breathiness creeps in.</p></div>
+          <div class="l-item reveal d1"><div class="l-item-top"><b>Resonance</b><i></i><span>ring &amp; color</span></div><p>The singer's ring that lets a voice carry, along with brightness, warmth and nasality.</p></div>
+          <div class="l-item reveal"><div class="l-item-top"><b>Registers</b><i></i><span>chest, mix, head</span></div><p>Every register you sing in, and how smoothly you cross the passaggio.</p></div>
+          <div class="l-item reveal d1"><div class="l-item-top"><b>Dynamics</b><i></i><span>pianissimo to forte</span></div><p>How well you control volume, and whether your phrases rise and fall with intention.</p></div>
+          <div class="l-item reveal"><div class="l-item-top"><b>Voice type</b><i></i><span>soprano to bass</span></div><p>Your natural range, identified so every tip is tuned to the voice you actually have.</p></div>
+          <div class="l-item reveal d1"><div class="l-item-top"><b>Onsets</b><i></i><span>the first moment</span></div><p>How each note begins, whether clean, breathy or scooped, and how it ends.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Plates -->
+    <div class="l-section" id="plates" style="padding-top:60px">
+      <div class="l-wrap">
+        <div class="l-kicker reveal">See your voice</div>
+        <h2 class="l-h2 reveal d1">Your singing, <em>rendered</em></h2>
+        <p class="l-lede reveal d2" style="margin-top:18px">These are real Vocalize charts from one recording of a professional singer (VocalSet, CC BY 4.0).</p>
+        <div class="l-plates">
+          <figure class="l-plate reveal">
+            <div class="l-frame"><img src="img/register-map.jpg" alt="Register timeline: each sung note plotted over time, colored by chest, mix or head voice" loading="lazy"></div>
+            <figcaption><b>Plate I</b><span>Register map: every note you sang, colored by chest, mix or head voice.</span></figcaption>
+          </figure>
+          <figure class="l-plate half reveal">
+            <div class="l-frame"><img src="img/score-radar.jpg" alt="Score radar and category score bars for intonation, vibrato, breath, resonance, dynamics, stability and passaggio" loading="lazy"></div>
+            <figcaption><b>Plate II</b><span>Score overview: how each part of your singing measured up.</span></figcaption>
+          </figure>
+          <figure class="l-plate half reveal d1">
+            <div class="l-frame"><img src="img/vibrato.jpg" alt="Close-up of one held note showing the pitch rising and falling about six times a second" loading="lazy"></div>
+            <figcaption><b>Plate III</b><span>Vibrato: a close-up of one held note, pulsing about six times a second.</span></figcaption>
+          </figure>
+          <figure class="l-plate reveal">
+            <div class="l-frame"><img src="img/phrase-map.jpg" alt="Phrase length map: each bar is one phrase between breaths, colored by length" loading="lazy"></div>
+            <figcaption><b>Plate IV</b><span>Phrasing: where you took a breath and how long each phrase lasted.</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sign in / sign up -->
+    <div class="l-section" id="stage">
+      <div class="l-wrap l-stage">
+        <div>
+          <div class="l-kicker reveal">Get started</div>
+          <h2 class="l-h2 reveal d1">Your voice is<br><em>waiting.</em></h2>
+          <p class="l-lede reveal d2">Step in as a guest and start singing right away, with no email and no password. If you'd like to keep your sessions, you can save them to an account at any time.</p>
+        </div>
+        <div class="l-ticket reveal d1" id="authCard">
+          <div class="l-ticket-head"><h3 id="authTitle">Welcome back</h3></div>
+          <div class="tabs" role="tablist">
+            <button class="active" data-mode="login" role="tab">Sign in</button>
+            <button data-mode="register" role="tab">Create account</button>
+          </div>
+          <div id="googleSignIn" class="hidden" style="margin-bottom:14px"></div>
+          <form id="authForm" novalidate>
+            <div id="nameField" class="hidden">
+              <label for="displayName">Your name</label>
+              <input id="displayName" type="text" autocomplete="nickname" maxlength="40" placeholder="What should we call you?">
+            </div>
+            <label for="email">Email</label>
+            <input id="email" type="email" autocomplete="email" required>
+            <label for="password">Password</label>
+            <input id="password" type="password" autocomplete="current-password" required minlength="8">
+            <p class="small muted hidden" id="pwHint">At least 8 characters.</p>
+            <div class="actions"><button class="l-btn l-btn-ghost" type="submit" id="authSubmit" style="width:100%">Sign in</button></div>
+            <div id="authMsg" class="msg hidden"></div>
+          </form>
+          <div class="l-or">or</div>
+          <button class="l-btn l-btn-gold l-guest-btn" data-guest>Continue as a guest</button>
+          <p class="l-guest-note">No sign-up needed. Your sessions stay on this browser.</p>
+        </div>
+      </div>
+    </div>
+
+    <footer class="l-foot">
+      <div class="l-wrap">
+        <div class="l-logo"><span class="logo logo-i logo-stacked"><span class="logo-word">Vocal<span class="mic-i" role="img" aria-label="i"></span><em>ze</em></span></span></div>
+        <p>For everyone who sings, in the shower, on the stage, and everywhere in between.</p>
+      </div>
+    </footer>
+  </section>
+</main>
+
+<div class="shell hidden" id="appRoot">
+  <nav class="rail" aria-label="Main">
+    <div class="brand"><span class="logo logo-i"><span class="logo-word">Vocal<span class="mic-i" role="img" aria-label="i"></span><em>ze</em></span></span></div>
+    <div id="railNav"></div>
+    <div class="rail-foot">
+      <a class="nav-item" href="#/profile" data-route="profile"><span data-icon="profile"></span><span id="railName">Profile</span></a>
+    </div>
+  </nav>
+  <header class="topbar">
+    <div class="brand"><span class="logo logo-i"><span class="logo-word">Vocal<span class="mic-i" role="img" aria-label="i"></span><em>ze</em></span></span></div>
+    <a class="icon-btn" href="#/profile" aria-label="Profile"><span data-icon="profile"></span></a>
+  </header>
+  <main class="content"><div class="page" id="view" tabindex="-1"></div></main>
+  <nav class="tabbar" aria-label="Main" id="tabNav"></nav>
+</div>
+
+<dialog class="sheet" id="claimDialog">
+  <form id="claimForm" novalidate>
+    <h2>Keep your sessions</h2>
+    <p class="muted small">Add an email and password to turn this guest visit into an account. Everything you've recorded comes with you.</p>
+    <label class="field" for="claimEmail">Email</label>
+    <input id="claimEmail" type="email" autocomplete="email" required>
+    <label class="field" for="claimPassword">Password</label>
+    <input id="claimPassword" type="password" autocomplete="new-password" required minlength="8">
+    <p class="small muted">At least 8 characters.</p>
+    <div id="claimMsg" class="msg hidden"></div>
+    <div class="row" style="margin-top:16px;justify-content:flex-end">
+      <button class="btn btn-quiet" type="button" id="claimCancel">Not now</button>
+      <button class="btn btn-primary" type="submit" id="claimSubmit">Save account</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="js/landing.js" defer></script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

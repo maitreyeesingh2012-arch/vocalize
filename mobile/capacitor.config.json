@@ -1,0 +1,26 @@
+{
+  "appId": "com.vocalize.app",
+  "appName": "Vocalize",
+  "webDir": "www",
+  "backgroundColor": "#0f0c14",
+  "server": {
+    "androidScheme": "https"
+  },
+  "ios": {
+    "contentInset": "never",
+    "backgroundColor": "#0f0c14"
+  },
+  "android": {
+    "backgroundColor": "#0f0c14"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 800,
+      "backgroundColor": "#0f0c14",
+      "showSpinner": false
+    },
+    "LocalNotifications": {
+      "iconColor": "#d8b26e"
+    }
+  }
+}

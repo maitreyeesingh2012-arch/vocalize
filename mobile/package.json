@@ -1,0 +1,27 @@
+{
+  "name": "vocalize-mobile",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Native iOS and Android shells for Vocalize (Capacitor). The app UI lives in ../web.",
+  "type": "module",
+  "scripts": {
+    "sync": "node scripts/sync-web.mjs && npx cap sync",
+    "assets": "npx capacitor-assets generate --assetPath resources --iconBackgroundColor \"#0f0c14\" --iconBackgroundColorDark \"#0f0c14\" --splashBackgroundColor \"#0f0c14\" --splashBackgroundColorDark \"#0f0c14\"",
+    "add:ios": "npx cap add ios",
+    "add:android": "npx cap add android",
+    "ios": "npm run sync && npx cap open ios",
+    "android": "npm run sync && npx cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/core": "^7.0.0",
+    "@capacitor/ios": "^7.0.0",
+    "@capacitor/local-notifications": "^7.0.0",
+    "@capacitor/splash-screen": "^7.0.0",
+    "@capacitor/status-bar": "^7.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^7.0.0"
+  }
+}

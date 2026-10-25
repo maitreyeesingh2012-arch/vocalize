@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Shared session · Vocalize</title>
+<meta name="theme-color" content="#0f0c14">
+<link rel="icon" href="/icons/icon-192.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/app.css">
+<script src="/js/config.js"></script>
+</head>
+<body>
+  <header style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--line)">
+    <div class="brand" style="font-family:var(--serif);font-size:26px"><span class="logo logo-i"><span class="logo-word">Vocal<span class="mic-i" role="img" aria-label="i"></span><em>ze</em></span></span></div>
+    <button class="btn btn-sm no-print" onclick="window.print()">Save as PDF</button>
+  </header>
+  <main class="content" style="margin:0;padding-top:24px">
+    <div class="page">
+      <div class="share-banner no-print" style="margin-bottom:16px">
+        <span style="flex:1">A singer shared this Vocalize session with you. It’s read-only. Click the pitch map to hear any phrase.</span>
+      </div>
+      <div id="view"><div class="row muted"><span class="spinner"></span> Loading…</div></div>
+    </div>
+  </main>
+  <script type="module">
+    import { api } from '/js/api.js';
+    import { renderReport } from '/js/views/sessions.js';
+    import { esc } from '/js/ui.js';
+    const token = location.pathname.split('/').filter(Boolean).pop();
+    const root = document.getElementById('view');
+    try {
+      const { payload } = await api(`/api/public/share/${encodeURIComponent(token)}`);
+      document.title = `${payload.session.label || 'Session'} · ${payload.singer} · Vocalize`;
+      await renderReport(root, payload.session.id, null, {
+        shared: true, payload, audioPath: `/api/public/share/${encodeURIComponent(token)}/audio`,
+      });
+    } catch (err) {
+      root.innerHTML = `<div class="card"><div class="empty"><span class="serif">Link unavailable</span>${esc(err.message)}</div></div>`;
+    }
+  </script>
+</body>
+</html>
