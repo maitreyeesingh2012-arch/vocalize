@@ -11,3 +11,4 @@ transformers==5.19.0
 safetensors==0.8.0
 nnaudio==0.3.4
 huggingface_hub
+sounddevice
