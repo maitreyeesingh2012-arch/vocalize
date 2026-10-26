@@ -1,7 +1,7 @@
 name: pages
 
-# Publishes the web app (web/) to GitHub Pages. The analysis server runs on Hugging Face Spaces,
-# so the published config.js points the app at it (https://msingh2012-vocalize.hf.space).
+# Publishes the web app (web/) to GitHub Pages. The analysis server runs on Azure Container Apps,
+# so the published config.js points the app at it.
 
 on:
   push:
@@ -19,7 +19,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  API_BASE: https://msingh2012-vocalize.hf.space
+  API_BASE: https://vocalize.calmriver-0dbe09db.westus.azurecontainerapps.io
 
 jobs:
   deploy:
