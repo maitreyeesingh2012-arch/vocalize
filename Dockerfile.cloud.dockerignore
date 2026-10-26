@@ -1,0 +1,9 @@
+**
+!app.py
+!vocal_analyzer.py
+!server/
+!vocal_scorer/
+!web/
+!requirements-space.txt
+!data/models/vocalize_staged.pt
+**/__pycache__

@@ -1,0 +1,38 @@
+# Vocalize server for cloud hosting (Azure Container Apps), built by .github/workflows/server-image.yml.
+FROM python:3.12-slim
+
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends libsndfile1 ffmpeg \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN useradd -m -u 1000 user
+USER user
+ENV HOME=/home/user PATH=/home/user/.local/bin:$PATH
+WORKDIR /home/user/app
+
+COPY --chown=user requirements-space.txt .
+RUN pip install --no-cache-dir --user torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu \
+ && pip install --no-cache-dir --user -r requirements-space.txt
+
+# The MERT music encoder (frozen, ~380 MB) comes straight from the Hugging Face Hub at build time.
+RUN python -c "from huggingface_hub import snapshot_download; snapshot_download('m-a-p/MERT-v1-95M', local_dir='data/models/MERT-v1-95M', allow_patterns=['*.json', '*.py', 'pytorch_model.bin', 'README.md'])"
+
+COPY --chown=user app.py vocal_analyzer.py ./
+COPY --chown=user server ./server
+COPY --chown=user vocal_scorer ./vocal_scorer
+COPY --chown=user web ./web
+COPY --chown=user data/models/vocalize_staged.pt ./data/models/
+
+# No persistent disk: accounts and recordings reset when the server restarts.
+ENV VOCALIZE_HOST=0.0.0.0 \
+    VOCALIZE_PORT=7860 \
+    VOCALIZE_DATA_DIR=/tmp/vocalize \
+    VOCALIZE_DB=/tmp/vocalize/vocalize.db \
+    VOCALIZE_SECURE_COOKIES=1 \
+    VOCALIZE_CORS_ORIGINS=https://maitreyeesingh2012-arch.github.io \
+    VOCALIZE_WORKERS=2 \
+    NUMBA_CACHE_DIR=/tmp/numba \
+    MPLCONFIGDIR=/tmp/mpl \
+    PYTHONUNBUFFERED=1
+EXPOSE 7860
+CMD ["python", "app.py"]

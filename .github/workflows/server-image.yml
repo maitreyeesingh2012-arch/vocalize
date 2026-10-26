@@ -1,0 +1,32 @@
+name: server-image
+
+# Builds the server image (Dockerfile.cloud) and publishes it to ghcr.io, where Azure pulls it from.
+
+on:
+  push:
+    branches: [main]
+    paths: ['app.py', 'vocal_analyzer.py', 'server/**', 'vocal_scorer/**', 'web/**', 'data/models/**',
+            'requirements-space.txt', 'Dockerfile.cloud*', '.github/workflows/server-image.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile.cloud
+          push: true
+          tags: ghcr.io/${{ github.repository }}:latest
